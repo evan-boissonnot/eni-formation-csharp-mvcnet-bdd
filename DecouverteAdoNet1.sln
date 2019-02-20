@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLog4Net", "TestLog4Net\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAspnetLog4Net", "TestAspnetLog4Net\TestAspnetLog4Net.csproj", "{5FE788E8-AE78-4446-BA36-2B1D2021947E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Log4Net", "Test_Log4Net\Test_Log4Net.csproj", "{241E9745-9013-414B-829A-3C895A28AC84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{DC92EF5A-0D74-4D7B-9D63-A3C71F0EE447}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{5FE788E8-AE78-4446-BA36-2B1D2021947E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FE788E8-AE78-4446-BA36-2B1D2021947E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FE788E8-AE78-4446-BA36-2B1D2021947E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241E9745-9013-414B-829A-3C895A28AC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241E9745-9013-414B-829A-3C895A28AC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241E9745-9013-414B-829A-3C895A28AC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241E9745-9013-414B-829A-3C895A28AC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC92EF5A-0D74-4D7B-9D63-A3C71F0EE447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC92EF5A-0D74-4D7B-9D63-A3C71F0EE447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC92EF5A-0D74-4D7B-9D63-A3C71F0EE447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC92EF5A-0D74-4D7B-9D63-A3C71F0EE447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
