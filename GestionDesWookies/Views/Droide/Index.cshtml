@@ -26,9 +26,14 @@
             @Html.DisplayFor(modelItem => item.Matricule)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateDeFabrication)
         </td>
         <td>
+            @{ 
+                string monUrl = Url.Action("Edit", "Droide", new { id = item.Id });
+            }
+
+            <a href="@monUrl">MonUrl</a>
+
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })

@@ -50,7 +50,7 @@ namespace GestionDesWookies.Controllers
             this._dataLayer.Edit(droide);
 
             this.SetModeleList();
-            return this.View();
+            return this.View(droide);
         }
 
         private void SetModeleList()

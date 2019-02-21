@@ -13,6 +13,19 @@ namespace GestionDesWookies
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                name: "ListeDesDroides",
+                url: "liste/droides",
+                defaults: new { controller = "Droide", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "EditionDroide",
+                url: "edition-droide/{id}",
+                defaults: new { controller = "Droide", action = "Edit" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

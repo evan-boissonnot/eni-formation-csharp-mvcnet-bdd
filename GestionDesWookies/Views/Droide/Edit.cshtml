@@ -7,8 +7,8 @@
     List<SelectListItem> items = listModele.Select(item => new SelectListItem()
     {
         Text = item.Libelle,
-        Value = item.Id.ToString(),
-        Selected = item.Id == Model.MonModele.Id
+        Value = item.ID.ToString(),
+        Selected = item.ID == Model.Modele.ID
     }).ToList();
 }
 
@@ -19,7 +19,7 @@
 {
     @Html.AntiForgeryToken()
     
-    @Html.HiddenFor(item => item.Id)
+    @Html.HiddenFor(item => item.ID)
 
     <div class="form-horizontal">
         <h4>Droide</h4>
@@ -34,9 +34,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ModeleId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ModeleID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ModeleId,
+                @Html.DropDownListFor(model => model.ModeleID,
                                       items)
 
                 @*@Html.EditorFor(model => model.DateDeFabrication, new { htmlAttributes = new { @class = "form-control" } })

@@ -19,13 +19,19 @@ namespace StarWarsLibrary
                 //vraiDroide.ModeleID = droide.ModeleID;
                 //vraiDroide.PointsDeVie = droide.PointsDeVie;
 
-                context.Droide.Add(droide);
-                context.Entry(droide).State = System.Data.Entity.EntityState.Modified;
+                context.Droide.Attach(droide);
+                //context.Entry(droide).State = System.Data.Entity.EntityState.Modified;
 
                 // => pour ne modifer que certaines colonnes en base
-                //context.Entry(droide).Property(item => item.Matricule).IsModified = true;
+                context.Entry(droide).Property(item => item.Matricule).IsModified = true;
+                context.Entry(droide).Property(item => item.ModeleID).IsModified = true;
 
                 context.SaveChanges();
+
+                droide.Modele = new Modele()
+                {
+                    ID = droide.ModeleID
+                };
             }
         }
 
@@ -48,6 +54,7 @@ namespace StarWarsLibrary
             using (StarWarsLibrary.StarWarsEntities context = new StarWarsEntities())
             {
                 var query = from item in context.Droide
+                                                .Include("Modele")
                             select item;
 
                 if (id > 0)
