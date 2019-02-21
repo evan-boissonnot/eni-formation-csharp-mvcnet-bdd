@@ -31,9 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,27 +50,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDataLayer.cs" />
-    <Compile Include="Droide.cs" />
+    <Compile Include="Droide.cs">
+      <DependentUpon>EntityStarWars.tt</DependentUpon>
+    </Compile>
     <Compile Include="DroideDataLayer.cs" />
-    <Compile Include="Modele.cs" />
+    <Compile Include="EntityStarWars.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityStarWars.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityStarWars.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityStarWars.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityStarWars.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityStarWars.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modele.cs">
+      <DependentUpon>EntityStarWars.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModeleDataLayer.cs" />
-    <Compile Include="Planete.cs" />
+    <Compile Include="Planete.cs">
+      <DependentUpon>EntityStarWars.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Wookie.cs" />
+    <Compile Include="Wookie.cs">
+      <DependentUpon>EntityStarWars.tt</DependentUpon>
+    </Compile>
     <Compile Include="WookieDataLayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <EntityDeploy Include="EntityStarWars.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntityStarWars.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityStarWars.edmx.diagram">
+      <DependentUpon>EntityStarWars.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityStarWars.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityStarWars.Context.cs</LastGenOutput>
+      <DependentUpon>EntityStarWars.edmx</DependentUpon>
+    </Content>
+    <Content Include="EntityStarWars.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityStarWars.edmx</DependentUpon>
+      <LastGenOutput>EntityStarWars.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

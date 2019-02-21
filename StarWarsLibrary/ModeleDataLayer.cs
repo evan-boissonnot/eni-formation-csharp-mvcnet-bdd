@@ -7,31 +7,20 @@ using System.Threading.Tasks;
 
 namespace StarWarsLibrary
 {
-    public class ModeleDataLayer : BaseDataLayer<Modele>
+    public class ModeleDataLayer //: BaseDataLayer<Modele>
     {
-        public override List<Modele> SelectAll(int id = -1)
+        public List<Modele> SelectAll(int id = -1)
         {
-            return this.SelectAll("SELECT ID, Libelle FROM Modele");
-        }
+            using (StarWarsLibrary.StarWarsEntities context = new StarWarsEntities())
+            {
+                var query = from item in context.Modele
+                            select item;
 
-        protected override void BindListWithReader(SqlDataReader reader, List<Modele> list)
-        {
-            Modele item = new Modele();
+                if (id > 0)
+                    query = query.Where(item => item.ID == id);
 
-            item.Id = int.Parse(reader["Id"].ToString());
-            item.Libelle = reader["Libelle"].ToString();
-
-            list.Add(item);
-        }
-
-        protected override string GetAddQuery(Modele item)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override string GetUpdateQuery(Modele item)
-        {
-            throw new NotImplementedException();
-        }
+                return query.ToList();
+            }
+            }
     }
 }

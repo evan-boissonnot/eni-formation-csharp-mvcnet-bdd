@@ -55,6 +55,7 @@
     <Compile Include="Droide.cs">
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model1.cs" />
     <Compile Include="Modele.cs">
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>

@@ -7,54 +7,54 @@ using System.Threading.Tasks;
 
 namespace StarWarsLibrary
 {
-    public class DroideDataLayer : BaseDataLayer<Droide>
+    public class DroideDataLayer 
     {
-        public override List<Droide> SelectAll(int id = -1)
+        public void Edit(Droide droide)
         {
-            string where = id > 0 ? " WHERE Droide.ID = " + id : string.Empty;
-
-            return this.SelectAll("SELECT Droide.ID, Matricule, DateDeF, Modele.ID as ModeleID, Modele.Libelle as ModeleLibelle " +
-                                  "From Droide join Modele on Droide.ModeleID = Modele.ID " + where);
-        }
-
-        protected override void BindListWithReader(SqlDataReader reader, List<Droide> list)
-        {
-            Droide item = new Droide();
-
-            item.Id = int.Parse(reader["ID"].ToString());
-            item.Matricule = reader["Matricule"].ToString();
-
-            Modele parent = new Modele()
+            using (StarWarsLibrary.StarWarsEntities context = new StarWarsEntities())
             {
-                Id = int.Parse(reader["ModeleID"].ToString()),
-                Libelle = reader["ModeleLibelle"].ToString()
-            };
+                //Droide vraiDroide = context.Droide.First(item => item.ID == droide.ID);
 
-            item.ModeleId = parent.Id;
+                //vraiDroide.Matricule = droide.Matricule;
+                //vraiDroide.ModeleID = droide.ModeleID;
+                //vraiDroide.PointsDeVie = droide.PointsDeVie;
 
-            item.MonModele= parent;
+                context.Droide.Add(droide);
+                context.Entry(droide).State = System.Data.Entity.EntityState.Modified;
 
-            list.Add(item);
+                // => pour ne modifer que certaines colonnes en base
+                //context.Entry(droide).Property(item => item.Matricule).IsModified = true;
+
+                context.SaveChanges();
+            }
         }
 
-        protected override string GetAddQuery(Droide droide)
+        public Droide SelectOne(int id)
         {
-            return "INSERT INTO [dbo].[Droide] " +
-                        "           ([Matricule] " +
-                        //"           ,[DateDeF] " +
-                        "           ,[ModeleID]) " +
-                        "     VALUES " +
-                        "           ('" + droide.Matricule + "'" +
-                        // "           ,<DateDeF, datetime,> " +
-                        "           ," + droide.ModeleId + ")";
+            return this.SelectAll(id).First();
         }
 
-        protected override string GetUpdateQuery(Droide item)
+        public void Add(Droide droide)
         {
-            return "UPDATE[dbo].[Droide] " +
-                "   SET [Matricule] = '" + item.Matricule + "' " +
-                "      ,[ModeleID] = " + item.ModeleId.ToString() +
-                " WHERE ID = " + item.Id.ToString();
-    }
+            using (StarWarsLibrary.StarWarsEntities context = new StarWarsEntities())
+            {
+                context.Droide.Add(droide);
+                context.SaveChanges();
+            }
+        }
+
+        public List<Droide> SelectAll(int id = -1)
+        {
+            using (StarWarsLibrary.StarWarsEntities context = new StarWarsEntities())
+            {
+                var query = from item in context.Droide
+                            select item;
+
+                if (id > 0)
+                    query = query.Where(item => item.ID == id);
+
+                return query.ToList();
+            }
+        }
     }
 }

@@ -12,17 +12,6 @@ namespace ConsoleApp1
         {
             using (ConsoleApp1.TestEntities context = new TestEntities())
             {
-                //var list = context.Droide;
-
-                ////var query = from item in context.Droide
-                //            where item.ID == 1
-                //            select item;
-
-                //var list = query.Where(item => item.ID == 1).ToList();
-                //var list2 = query.ToList().Where(item => item.ID == 1);
-
-                //Droide dd = context.Droide.First();
-                //Droide ddd = context.Droide.First(item => item.ID == 1);
 
                 foreach (var item in context.Droide.ToList())
                 {
