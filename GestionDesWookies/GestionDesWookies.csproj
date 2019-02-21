@@ -132,9 +132,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Constraints\MaSuperConstraint.cs" />
+    <Compile Include="Constraints\ValidationNombreConstraint.cs" />
     <Compile Include="Controllers\DroideController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaneteController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\WookieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +188,8 @@
     <Content Include="Views\Droide\Index.cshtml" />
     <Content Include="Views\Droide\Create.cshtml" />
     <Content Include="Views\Droide\Edit.cshtml" />
+    <Content Include="Views\Player\Login.cshtml" />
+    <Content Include="Views\Game\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
